@@ -29,6 +29,7 @@ div#imagem {
 }
 
 img#logo {
+    margin-left: 3%;
     position: absolute;
     bottom: 93%;
     size: 5px;
@@ -136,8 +137,9 @@ ul#tp img {
 p#novamente {
     color: white;
     font-size: 1.2em;
+    margin-top: 10%;
     position: absolute;
-        top: 80%;
+        top: 70%;
         left: 50%;
         transform: translate( -92%, -50%);
 }
