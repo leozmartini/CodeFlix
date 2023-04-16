@@ -6,3 +6,12 @@ function copy() {
         window.open("https://www.geogebra.org/calculator", "_blank");
     })
 }
+
+function closeWindow() {
+
+    setTimeout(() => {
+        window.close();
+    }, 1);
+
+    
+}
