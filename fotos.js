@@ -1,0 +1,1 @@
+// sortear números diferentes e aplicar no html as fotos sorteadas, para toda vez vir uma lista diferente

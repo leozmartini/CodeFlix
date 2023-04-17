@@ -1,6 +1,7 @@
-body {
+/* DESKTOP */
+@media screen and (min-width: 700px) {
+  body {
     background-color: rgb(17, 17, 17);
-
 }
 
 h1 {
@@ -27,7 +28,6 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15%;
 }
 
 div#botao {
@@ -38,7 +38,8 @@ div#botao {
   }
   
   .copy-btn {
-    background-color: red;
+    background-color: green;
+    width: 100%;
     color: white;
     border: none;
     border-radius: 4px;
@@ -46,6 +47,7 @@ div#botao {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 10px;
   }
   
   .copy-btn:hover {
@@ -98,6 +100,114 @@ a {
     display: block;
     text-align: center;
 }
+}
+
+
 
   
+/* MOBILE */
+
+@media screen and (max-width: 699px) {
+  body {
+    background-color: rgb(17, 17, 17);
+    margin-top: 200px;
+
+}
+
+h1 {
+    font-size: 23px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+h2 {
+    font-size: 12px;
+    color: rgb(61, 61, 61);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+}
+
+h3 {
+    font-size: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%
+  }
   
+  .copy-btn {
+    background-color: green;
+    width: 100%;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .copy-btn:hover {
+    background-color: rgb(253, 68, 68);
+  }
+  
+  .copy-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .copy-btn:active {
+    background-color: red;
+  }
+
+/* BACK BTN */
+
+
+  .back-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-btn:hover {
+    background-color: rgb(253, 68, 68);
+  }
+  
+  .back-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .back-btn:active {
+    background-color: red;
+  }
+
+  .back-a {
+    color: white;
+    text-decoration: none;
+  }
+  
+
+a {
+    display: block;
+    text-align: center;
+}
+}
