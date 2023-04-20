@@ -54,8 +54,9 @@
     h1 {
         text-align: center;
         position: relative;
-        top: 150px;
+        top: 222px;
         color: white;
+        font-size: 50px;
     }
     div#gio {
         background-image: url(/imagens/amor.jpeg);

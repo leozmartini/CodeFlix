@@ -81,9 +81,9 @@ p#titulo {
 }
 p#subtitulo {
     color: white;
-    font-size: 0.8em;
+    font-size: .9em;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 3%;
 }
 
@@ -115,12 +115,13 @@ ul#tp {
 
 }
 
-p#alta {
+p#relevantes {
+    width: 150px;
     color: white;
     font-size: 1.2em;
     position: absolute;
         top: 50%;
-        left: 50%;
+        left: 98%;
         transform: translate( -241%, 110%);
 }
 
@@ -132,7 +133,7 @@ ul#tp img {
     box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.136);
 }
 
-p#novamente {
+p#escolhas {
     color: white;
     font-size: 1.2em;
     margin-top: 10%;
