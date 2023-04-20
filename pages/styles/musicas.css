@@ -6,20 +6,19 @@
   }
 
   .spotify {
-    /* background-color: red; */
     color: white;
-    display: flex; /* transforma o container em um flex container */
-    flex-direction: column; /* define a direção dos elementos como coluna */
-    align-items: center; /* alinha os elementos horizontalmente no centro */
-    justify-content: center; /* alinha os elementos verticalmente no centro */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
   }
 
   .text {
     color: white;
-    display: flex; /* transforma o container em um flex container */
-    flex-direction: column; /* define a direção dos elementos como coluna */
-    align-items: center; /* alinha os elementos horizontalmente no centro */
-    justify-content: center; /* alinha os elementos verticalmente no centro */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
     margin-bottom: 5%;
   }
 
@@ -94,20 +93,19 @@ div#botao {
   }
 
   .spotify {
-    /* background-color: red; */
     color: white;
-    display: flex; /* transforma o container em um flex container */
-    flex-direction: column; /* define a direção dos elementos como coluna */
-    align-items: center; /* alinha os elementos horizontalmente no centro */
-    justify-content: center; /* alinha os elementos verticalmente no centro */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
   }
 
   .text {
     color: white;
-    display: flex; /* transforma o container em um flex container */
-    flex-direction: column; /* define a direção dos elementos como coluna */
-    align-items: center; /* alinha os elementos horizontalmente no centro */
-    justify-content: center; /* alinha os elementos verticalmente no centro */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
   }
 
   iframe {

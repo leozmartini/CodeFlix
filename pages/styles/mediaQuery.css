@@ -11,7 +11,7 @@
         color: white;
     }
     div#gio {
-        background-image: url(imagens/amor.jpeg);
+        background-image: url(/imagens/amor.jpeg);
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -20,7 +20,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         border-radius: 8px;
-        background-color: white;
+        background-color: rgb(17, 17, 17);
         width: 90px;
         height: 100px;
     }
@@ -43,7 +43,7 @@
         height: 20px;
         width: 150px;
         text-align: center;
-        margin: 5px white;
+        margin: 5px rgb(255, 0, 0);
     }
 }
 
@@ -58,7 +58,7 @@
         color: white;
     }
     div#gio {
-        background-image: url(imagens/amor.jpeg);
+        background-image: url(/imagens/amor.jpeg);
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -67,7 +67,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         border-radius: 8px;
-        background-color: white;
+        background-color: rgb(17, 17, 17);
         width: 90px;
         height: 100px;
     }

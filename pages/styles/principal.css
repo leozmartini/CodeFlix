@@ -18,7 +18,7 @@ body {
 }
 
 div#imagem {
-    background-image: url(imagens/nos.jpeg);
+    background-image: url(/imagens/nos.jpeg);
     background-size: cover;
     background-position: center center;
     width: 99%;
@@ -59,7 +59,7 @@ h5#navegar {
     color: white;
 }
 div#icon {
-    background-image: url(imagens/amor.jpeg);
+    background-image: url(/imagens/amor.jpeg);
     background-position: right right;
     background-size: cover;
     position: absolute;

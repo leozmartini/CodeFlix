@@ -17,7 +17,7 @@ h1 {
 }
 
 div#gio {
-    background-image: url(imagens/amor.jpeg);
+    background-image: url(/imagens/amor.jpeg);
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ div#gio {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 8px;
-    background-color: white;
+    background-color: rgb(17, 17, 17);
     width: 90px;
     height: 100px;
  

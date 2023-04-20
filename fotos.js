@@ -1,13 +1,13 @@
 let fotos = [
-    "imagens/timeline/um.jpg",
-    "imagens/timeline/dois.jpg",
-    "imagens/timeline/tres.jpg",
-    "imagens/timeline/quatro.jpg",
-    "imagens/timeline/cinco.jpg",
-    "imagens/timeline/seis.jpg",
-    "imagens/timeline/sete.jpg",
-    "imagens/timeline/oito.jpg",
-    "imagens/timeline/nove.jpg",
+    "/imagens/timeline/um.jpg",
+    "/imagens/timeline/dois.jpg",
+    "/imagens/timeline/tres.jpg",
+    "/imagens/timeline/quatro.jpg",
+    "/imagens/timeline/cinco.jpg",
+    "/imagens/timeline/seis.jpg",
+    "/imagens/timeline/sete.jpg",
+    "/imagens/timeline/oito.jpg",
+    "/imagens/timeline/nove.jpg",
 ]
 
 let fotosEscolhidas = []
