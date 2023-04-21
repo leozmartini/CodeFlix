@@ -10,6 +10,38 @@ let fotos = [
     "/imagens/timeline/nove.jpg",
 ]
 
+// let fotos = [
+//     "/imagens/we/feito/1.png",
+//     "/imagens/we/feito/2.png",
+//     "/imagens/we/feito/3.png",
+//     "/imagens/we/feito/4.png",
+//     "/imagens/we/feito/5.png",
+//     "/imagens/we/feito/6.png",
+//     "/imagens/we/feito/7.png",
+//     "/imagens/we/feito/8.png",
+//     "/imagens/we/feito/9.png",
+//     "/imagens/we/feito/10.png",
+//     "/imagens/we/feito/11.png",
+//     "/imagens/we/feito/12.png",
+//     "/imagens/we/feito/13.png",
+//     "/imagens/we/feito/14.png",
+//     "/imagens/we/feito/15.png",
+//     "/imagens/we/feito/16.png",
+//     "/imagens/we/feito/17.png",
+//     "/imagens/we/feito/18.png",
+//     "/imagens/we/feito/19.png",
+//     "/imagens/we/feito/20.png",
+//     "/imagens/we/feito/21.png",
+//     "/imagens/we/feito/22.png",
+//     "/imagens/we/feito/23.png",
+//     "/imagens/we/feito/24.png",
+//     "/imagens/we/feito/25.png",
+//     "/imagens/we/feito/26.png",
+// ]
+
+// Seria eficaz nessa parte usar as bibliotecas fs e path, do node.js, pra conseguir listar todas as imagens automaticamente
+//  e quando fosse adicionada mais um imagem, ou removida, automaticamente seria alterada a array acima.
+
 let fotosEscolhidas = []
 
     function sortearFoto() {
