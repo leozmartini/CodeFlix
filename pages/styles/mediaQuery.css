@@ -11,7 +11,7 @@
         color: white;
     }
     div#gio {
-        background-image: url(/imagens/amor.jpeg);
+        background-image: url(../../imagens/amor.jpeg);
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -59,7 +59,7 @@
         font-size: 50px;
     }
     div#gio {
-        background-image: url(/imagens/amor.jpeg);
+        background-image: url(../../imagens/amor.jpeg);
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
