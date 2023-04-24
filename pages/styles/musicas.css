@@ -13,7 +13,7 @@
     justify-content: center; 
   }
 
-  .text {
+  .text-main {
     color: white;
     display: flex; 
     flex-direction: column; 
@@ -22,8 +22,16 @@
     margin-bottom: 5%;
   }
 
+  .text {
+    color: white;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+  }
+
   iframe {
-    margin-bottom: -50px;
+    margin-bottom: 60px;
     width: 35%;
     height: 5%;
   }
@@ -37,7 +45,7 @@
 }
 
 h2 {
-    font-size: 15px;
+    font-size: 20px;
     color: rgb(61, 61, 61);
     display: flex;
     justify-content: center;
@@ -49,7 +57,9 @@ div#botao {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2%
+  margin: 2%;
+  margin-top: -70px;
+  margin-bottom: 150px;
 }
 
 .back-btn {
@@ -100,16 +110,26 @@ div#botao {
     justify-content: center; 
   }
 
+  .text-main {
+    color: white;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 4%;
+  }
+
   .text {
     color: white;
     display: flex; 
     flex-direction: column; 
-    align-items: center;
+    align-items: center; 
     justify-content: center;
   }
 
   iframe {
-    margin-bottom: -15%;
+    margin-top: -10px;
+    margin-bottom: 30px;
     width: 80%;
     height: 5%;
   }
@@ -122,14 +142,15 @@ div#botao {
 h2 {
     font-size: 20px;
     color: rgb(61, 61, 61);
-    margin-top: -15px;
+    margin-top: -5%;
 }
 
 div#botao {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2%
+  margin: 2%;
+  margin-bottom: 20%;
 }
 
 .back-btn {
