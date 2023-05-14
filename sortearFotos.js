@@ -7,6 +7,7 @@ let fotos = [
     "../imagens/timeline/7.png",
     "../imagens/timeline/8.png",
     "../imagens/timeline/9.png",
+    "../imagens/timeline/10.png",
     "../imagens/timeline/11.png",
     "../imagens/timeline/12.png",
     "../imagens/timeline/13.png",
