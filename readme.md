@@ -17,3 +17,6 @@ Além disso, achei problemas com a integridade de permissões de uso de JS em na
 
 ## Branches
 Pretendo aprofundar ainda este projeto com um back-end bem planejado e completo. As branches serão divididas dependendo da profundidade do back-end, por exemplo, posso criar um sistema de login simples em uma branch, e em outra, fazer outro sistema de login mais aprofundado, com tecnologias diferentes e criptografia. A main ficará para a parte simples e usual, não pretendo fazer mais alterações na main após finalizar o trabalho.
+
+## Back-end
+Em desenvolvimento na branch -> feature/backend
