@@ -17,7 +17,7 @@ h1 {
 }
 
 div#gio {
-    background-image: url(../../imagens/amor.jpeg);
+    background-image: url(../images/amor.jpeg);
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;

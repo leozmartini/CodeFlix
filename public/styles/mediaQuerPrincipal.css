@@ -4,7 +4,7 @@
         font-family: Arial, Helvetica, sans-serif
     }
     div#imagem {
-        background-image: url(../../imagens/nos.gif);
+        background-image: url(/protected/images/nos.gif);
         background-size: cover;
         background-position: center center;
         width: 99%;
@@ -76,7 +76,7 @@
         font-family: Arial, Helvetica, sans-serif
     }
     div#imagem {
-        background-image: url(../../imagens/nos.gif);
+        background-image: url(/protected/images/nos.gif);
         background-size: cover;
         background-position: center center;
         width: 99%;
@@ -114,7 +114,7 @@
         color: white;
     }
     div#icon {
-        background-image: url(../../imagens/amor.jpeg);
+        background-image: url(/images/amor.jpeg);
         background-position: right right;
         background-size: cover;
         position: absolute;
