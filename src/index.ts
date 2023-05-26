@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-import { readdir, fotos } from '../protected/src/readdir';
+import { listDir } from '../protected/src/listDir';
 
 
 const app = express();
@@ -44,10 +44,10 @@ app.get('/protected/src/:fileName', (req: any, res: any) => {
     res.sendFile(path.resolve(__dirname, '../protected/src', fileName))
 })
 
-// scripts (PRECISO RESOLVER)
-app.get('/array', (req: any, res: any) => {
-    console.log(readdir())
-    res.send(readdir())
+// scripts
+app.get('/array', async (req: any, res: any) => {
+    const files = await listDir()
+    res.send(files)
 })
 
 
