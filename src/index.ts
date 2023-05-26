@@ -1,6 +1,8 @@
-const express = require('express')
-const path = require('path')
-import { listDir } from '../protected/src/listDir';
+import express from 'express';
+
+const files = require('./routes/files')
+const pages = require('./routes/pages')
+const scripts = require('./routes/scripts')
 
 
 const app = express();
@@ -10,46 +12,11 @@ app.set('view engine', 'html');
 app.use(express.static('public'));
 app.set('views', 'views');
 
-// pages
-app.get('/', (req: any, res: any)=> {
-    res.render('index')
-})
+// Routes
 
-app.get('/principal', (req: any, res: any)=> {
-    res.render('../views/principal')
-})
-
-app.get('/math', (req: any, res: any)=> {
-    res.render('../views/math')
-})
-
-app.get('/musicas', (req: any, res: any)=> {
-    res.render('../views/musicas')
-})
-
-
-// files
-app.get('/protected/images/:imageName', (req: any, res: any) => {
-    const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, '../protected/images', imageName))
-})
-
-app.get('/protected/images/timeline/:imageName', (req: any, res: any) => {
-    const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, '../protected/images/timeline', imageName))
-})
-
-app.get('/protected/src/:fileName', (req: any, res: any) => {
-    const fileName = req.params.fileName;
-    res.sendFile(path.resolve(__dirname, '../protected/src', fileName))
-})
-
-// scripts
-app.get('/array', async (req: any, res: any) => {
-    const files = await listDir()
-    res.send(files)
-})
-
+app.use('/files', files)
+app.use('/pages', pages)
+app.use('/scripts', scripts)
 
 app.listen(3000, () => console.log('✅ Server online -> http://localhost:3000/'))
 

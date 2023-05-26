@@ -1,11 +1,11 @@
 const fotos = []
 const fotosEscolhidas = []
 
-fetch('/array')
+fetch('../scripts/array')
     .then(response => response.json())
     .then(async imageName => {
         for (let i = 0; i < imageName.length; i++) {
-            fotos.push(`/protected/images/timeline/${imageName[i]}`)
+            fotos.push(`../files/protected/images/timeline/${imageName[i]}`)
         }
         const a1 = document.getElementById("a1")
         const a2 = document.getElementById("a2")
