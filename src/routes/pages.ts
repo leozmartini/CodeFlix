@@ -1,21 +1,26 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
+
 const router = express.Router()
 
-router.get('/', (req: any, res: any)=> {
+router.get('/', (req: Request, res: Response)=> {
     res.render('index')
 })
 
-router.get('/principal', (req: any, res: any)=> {
+router.get('/principal', (req: Request, res: Response)=> {
     res.render('../views/principal')
 })
 
-router.get('/math', (req: any, res: any)=> {
+router.get('/math', (req: Request, res: Response)=> {
     res.render('../views/math')
 })
 
-router.get('/musicas', (req: any, res: any)=> {
+router.get('/musicas', (req: Request, res: Response)=> {
     res.render('../views/musicas')
 })
 
+router.use(function(req, res, next) {
+    res.status(404)
+    res.render('404')
+});
 
 module.exports = router;

@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 
 const files = require('./routes/files')
 const pages = require('./routes/pages')
@@ -10,13 +11,19 @@ const app = express();
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static('public'));
-app.set('views', 'views');
+app.set('views', path.join(__dirname, '../public'));
 
 // Routes
 
 app.use('/files', files)
 app.use('/pages', pages)
 app.use('/scripts', scripts)
+
+app.use(function(req, res, next) {
+    res.status(404)
+    res.render('404')
+});
+  
 
 app.listen(3000, () => console.log('✅ Server online -> http://localhost:3000/'))
 
