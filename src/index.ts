@@ -1,5 +1,7 @@
 import express, { Response } from 'express';
 import path from 'path';
+import mongoose from 'mongoose';
+require('dotenv').config();
 
 const files = require('./routes/files')
 const pages = require('./routes/pages')
@@ -29,6 +31,11 @@ app.use(function(req, res, next) {
 });
   
 
-app.listen(3000, () => console.log('✅ Server online -> http://localhost:3000/'))
+mongoose.connect(process.env.DB_URI || 'Erro no DB_URI' ).then(() => {
+    console.log('✅ Conectado ao banco de dados.')
+    app.listen(3000, () => console.log('✅ Server online -> http://localhost:3000/'))
+}).catch((error) => {
+    console.log(`Erro na conexão com banco de dados: ${error}`)
+})
 
 
