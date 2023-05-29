@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(17, 17, 17);
+}
+
+.container {
+    max-width: 400px;
+    margin: 250px auto;
+    padding: 20px;
+    background-color: rgb(27, 27, 27);
+    border: 1px solid rgb(105, 105, 105);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    color:rgb(105, 105, 105);
+    text-align: center;
+}
+
+.container input[type="text"],
+.container input[type="password"] {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(105, 105, 105);
+    border-radius: 5px;
+}
+
+.container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #E50914;
+    color: rgb(105, 105, 105);
+    font-size: 22px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

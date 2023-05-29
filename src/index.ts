@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response } from 'express';
 import path from 'path';
 
 const files = require('./routes/files')
@@ -18,6 +18,10 @@ app.set('views', path.join(__dirname, '../public'));
 app.use('/files', files)
 app.use('/pages', pages)
 app.use('/scripts', scripts)
+
+app.get('/login', (req: any, res: any)=> {
+    res.render('login')
+})
 
 app.use(function(req, res, next) {
     res.status(404)
