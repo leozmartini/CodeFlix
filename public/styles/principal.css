@@ -18,7 +18,7 @@ body {
 }
 
 div#imagem {
-    background-image: url(files/protected/images/nos.gif);
+    background-image: url(/files/protected/images/nos.gif);
     background-size: cover;
     background-position: center center;
     width: 99%;
@@ -59,7 +59,7 @@ h5#navegar {
     color: white;
 }
 div#icon {
-    background-image: url(/files/protected/images/nos.gif);
+    background-image: url(/images/amor.jpeg);
     background-position: right right;
     background-size: cover;
     position: absolute;

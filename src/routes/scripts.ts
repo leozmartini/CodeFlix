@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 const router = express.Router()
 
-import { listDir } from '../../protected/src/listDir';
+import { listDir } from '../listDir';
 
 router.get('/array', async (req: Request, res: Response) => {
     const files = await listDir()
