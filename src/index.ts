@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
+import fs from 'fs'
 import mongoose from 'mongoose';
 require('dotenv').config();
 
@@ -9,7 +10,7 @@ const scripts = require('./routes/scripts')
 const auth  = require('./routes/auth')
 
 const app = express();
-const serverURL = process.env.SERVER_URL || "http://localhost";
+const serverURL = process.env.SERVER_URL || "localhost";
 
 const port = process.env.PORT || 3000;
 
@@ -43,3 +44,16 @@ mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
 })
 
 
+// HTTPS (apenas para desenvolvimento, no deploy não é necessário pois é usado o SSL da própria hospedagem)
+
+// const https = require('https')
+// mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
+// https.createServer({
+//     key: fs.readFileSync('./SSL/code.key'),
+//     cert: fs.readFileSync('./SSL/code.crt'),
+// }, app).listen(port, () => {
+//     console.log(`✅ Server HTTPS online -> https://${serverURL}:${port}/`);
+// })
+// }).catch((error) => {
+//     console.log(`Erro ao tentar iniciar: ${error}`)
+// })
