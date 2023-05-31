@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express'
+import bodyParser from 'body-parser';
 const bcrypt = require('bcrypt')
 require('dotenv').config();
 
@@ -8,6 +9,26 @@ const User = require('../models/User')
 
 // JSON response 
 router.use(express.json())
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
+
+router.post('/login', async (req: Request, res: Response) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    // validations 
+    if (!username || !password) return
+
+    const userData = await User.findOne({ username: username })
+    if (!userData) { return console.log('usuario n existe') }
+
+    if (userData) {
+        await setTimeout(() => {res.status(200).redirect('/pages/principal')}, 2000)
+        return
+    }
+    // PRECISA VERIFICAR SENHA E EXIBIR NO HTML SE FOI LOGADO CERTO + ADD JWT TOKEN
+
+})
 
 router.post('/register', async (req: Request, res: Response) => {
     const { adminKey, username, password } = req.body

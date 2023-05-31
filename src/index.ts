@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 
 mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
     console.log('✅ Conectado ao banco de dados.')
-    app.listen(port, () => console.log(`✅ Server online -> ${serverURL}:${port}/`))
+    app.listen(port, () => console.log(`✅ Server online -> http://${serverURL}:${port}/`))
 }).catch((error) => {
     console.log(`Erro na conexão com banco de dados: ${error}`)
 })
