@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser';
+import { getDate } from '../getDate'
 const bcrypt = require('bcrypt')
 require('dotenv').config();
 
@@ -20,11 +21,18 @@ router.post('/login', async (req: Request, res: Response) => {
     if (!username || !password) return
 
     const userData = await User.findOne({ username: username })
-    if (!userData) { return console.log('usuario n existe') }
+    if (!userData) { console.log('usuario nao existe'); return res.status(401).redirect('/login') }
 
     if (userData) {
-        await setTimeout(() => {res.status(200).redirect('/pages/principal')}, 2000)
-        return
+        userData.lastLogin = getDate()
+        await userData.save()
+        .then(() => {
+            // setTimeout(() => {res.status(200).redirect('/pages/principal')}, 2000)
+            res.send('logado')
+            return
+        })
+        .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
+
     }
     // PRECISA VERIFICAR SENHA E EXIBIR NO HTML SE FOI LOGADO CERTO + ADD JWT TOKEN
 
@@ -61,7 +69,8 @@ router.post('/register', async (req: Request, res: Response) => {
     const user = new User({
         adminKey,
         username,
-        password: passwordHash
+        password: passwordHash,
+        lastLogin: getDate()
     })
 
     try {
