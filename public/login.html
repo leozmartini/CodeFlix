@@ -14,13 +14,13 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="/auth/login" method="post" id="form">
-            <input type="text" id="username" name="username" placeholder="Nome de usuário" required>
-            <input type="password" id="password" name="password" placeholder="Senha" required>
-            <button type="submit"><strong>Entrar</strong></button>
-        </form>
+
+            <input type="text" id="username" placeholder="Nome de usuário">
+            <input type="password" id="password" placeholder="Senha">
+            <button onclick="login()"><strong>Entrar</strong></button>
+
         <div id="response"></div>
     </div>
-</body>
+</body> 
 
 </html>

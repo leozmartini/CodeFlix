@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser';
 import { getDate } from '../getDate'
+const session = require('express-session')
 const bcrypt = require('bcrypt')
 require('dotenv').config();
 
@@ -12,29 +13,34 @@ const User = require('../models/User')
 router.use(express.json())
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
+router.use(session({
+    secret: 'abc',
+    resave: false,
+    saveUninitialized: true
+}));
 
-router.post('/login', async (req: Request, res: Response) => {
-    const username = req.body.username;
-    const password = req.body.password;
+router.post('/login', async (req: any, res: Response) => {
+    const { username, password } = req.body
 
     // validations 
     if (!username || !password) return
 
     const userData = await User.findOne({ username: username })
-    if (!userData) { console.log('usuario nao existe'); return res.status(401).redirect('/login') }
+    if (!userData) return res.send('404')
 
-    if (userData) {
-        userData.lastLogin = getDate()
-        await userData.save()
-        .then(() => {
-            // setTimeout(() => {res.status(200).redirect('/pages/principal')}, 2000)
-            res.send('logado')
-            return
-        })
-        .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
+    // password verify
+    const hash = userData.password
 
-    }
-    // PRECISA VERIFICAR SENHA E EXIBIR NO HTML SE FOI LOGADO CERTO + ADD JWT TOKEN
+    res.send(await bcrypt.compare(password, hash).then((x: Boolean) => { return x })?'202' : '401') // comparação ternária.
+
+    // logado
+
+    userData.lastLogin = getDate()
+    await userData.save()
+    .then(() => {
+        console.log('lastLogin atualizado')
+    })
+    .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
 
 })
 
