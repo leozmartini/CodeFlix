@@ -26,21 +26,36 @@ router.post('/login', async (req: any, res: Response) => {
     if (!username || !password) return
 
     const userData = await User.findOne({ username: username })
-    if (!userData) return res.send('404')
+    if (!userData) return res.json({"statusLogin": "404"})
 
     // password verify
     const hash = userData.password
 
-    res.send(await bcrypt.compare(password, hash).then((x: Boolean) => { return x })?'202' : '401') // comparação ternária.
+    // res.send(await bcrypt.compare(password, hash).then((x: Boolean) => { return x })?'202' : '401') // comparação ternária.
+    let auth
+    await bcrypt.compare(password, hash).then((x: Boolean) => { auth = x })
 
-    // logado
+    if (auth) {
+        // update lasLogin
+        userData.lastLogin = getDate()
+        await userData.save()
+        .then(() => {
+            console.log('lastLogin atualizado')
+        })
+        .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
+        
+        // start session
 
-    userData.lastLogin = getDate()
-    await userData.save()
-    .then(() => {
-        console.log('lastLogin atualizado')
-    })
-    .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
+        // response
+        res.json({
+            "statusLogin": "202",
+            "redirect": "/pages/principal"
+        })
+
+    } else {
+        res.json({"statusLogin": "401"})
+    }
+
 
 })
 

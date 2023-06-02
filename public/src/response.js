@@ -3,7 +3,6 @@ function login() {
     const password = document.getElementById('password').value
     const response = document.getElementById('response')
     let resText
-
     fetch("/auth/login", {
         method: 'POST',
         body: JSON.stringify({
@@ -15,12 +14,20 @@ function login() {
     })
 
         .then(async (res) => {
-            resText = await res.text()
-            // response.innerHTML = resText == '404' ? '<h3> Usuário não encontrado </h3>' : resText == '401' ? '<h3> Senha incorreta </h3>' : '<h3>logado</h3>'
-            if (resText == '404') {responseFailed(); response.innerHTML = '<h3> Usuário não encontrado </h3>' }
-            if (resText == '401') { responseFailed(); response.innerHTML = '<h3> Senha incorreta </h3>' }
+            const data = await res.json();
 
-            if (resText == '202') {responseDone(); response.innerHTML = '<h3> Logado com sucesso.<br>Redirecionando... </h3>'}
+            // response.innerHTML = resText == '404' ? '<h3> Usuário não encontrado </h3>' : resText == '401' ? '<h3> Senha incorreta </h3>' : '<h3>logado</h3>'
+            if (data.statusLogin == '404') {responseFailed(); response.innerHTML = '<h3> Usuário não encontrado </h3>' }
+            if (data.statusLogin == '401') { responseFailed(); response.innerHTML = '<h3> Senha incorreta </h3>' }
+
+            if (data.statusLogin == '202') {
+                responseDone(); 
+                response.innerHTML = '<h3> Logado com sucesso.<br>Redirecionando... </h3>'
+
+                setTimeout(() => {
+                    window.location.href = data.redirect
+                },1000) 
+            }
         })
 
 }
