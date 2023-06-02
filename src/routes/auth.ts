@@ -88,7 +88,6 @@ router.post('/register', async (req: Request, res: Response) => {
 
     // create user
     const user = new User({
-        adminKey,
         username,
         password: passwordHash,
         lastLogin: getDate()
