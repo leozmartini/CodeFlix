@@ -37,3 +37,29 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.responseDone {
+    text-align: center;
+    max-width: 400px;
+    margin: -230px auto;
+    padding: 20px;
+    background-color: rgb(27, 27, 27);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    border: 1px solid green;
+    color: green;
+}
+
+.responseFailed {
+    text-align: center;
+    max-width: 400px;
+    margin: -230px auto;
+    padding: 20px;
+    background-color: rgb(27, 27, 27);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    border: 1px solid red;
+    color: red;
+}
