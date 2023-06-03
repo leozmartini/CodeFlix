@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express'
 const router = express.Router()
+const perm = 22
+
 
 const path = require('path')
 
@@ -8,9 +10,14 @@ router.get('/protected/images/:imageName', (req: Request, res: Response) => {
     res.sendFile(path.resolve(__dirname, '../../protected/images', imageName))
 })
 
+router.get(`/protected/images/users/user/:imageName`, (req: Request, res: Response) => {
+    const imageName = req.params.imageName;
+    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${perm}`, imageName))
+})
+
 router.get('/protected/images/timeline/:imageName', (req: Request, res: Response) => {
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, '../../protected/images/timeline', imageName))
+    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${perm}/timeline`, imageName))
 })
 
 router.get('/protected/src/:fileName', (req: Request, res: Response) => {

@@ -3,8 +3,7 @@
     * {
         font-family: Arial, Helvetica, sans-serif
     }
-    div#imagem {
-        background-image: url(/files/protected/images/nos.gif);
+    div#gif {
         background-size: cover;
         background-position: center center;
         width: 99%;
@@ -75,8 +74,7 @@
     * {
         font-family: Arial, Helvetica, sans-serif
     }
-    div#imagem {
-        background-image: url(/files/protected/images/nos.gif);
+    div#gif {
         background-size: cover;
         background-position: center center;
         width: 99%;
@@ -114,7 +112,7 @@
         color: white;
     }
     div#icon {
-        background-image: url(/images/amor.jpeg);
+        /* background-image: url(/images/amor.jpeg); */
         background-position: right right;
         background-size: cover;
         position: absolute;

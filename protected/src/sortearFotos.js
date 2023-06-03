@@ -31,3 +31,10 @@ function sortearFoto() {
     return fotos[numeroSorteado];
 }
 
+window.addEventListener("load", function() {
+    const gif = document.getElementById("gif");
+    gif.style.backgroundImage = `url(/files/protected/images/users/user/gif.gif)`;
+
+    const icon = document.getElementById("icon");
+    icon.style.backgroundImage = `url(/files/protected/images/users/user/user.jpeg)`;
+});
