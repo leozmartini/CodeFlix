@@ -1,26 +1,32 @@
-import express, { Request, Response } from 'express'
+import express, { Request as any, Response } from 'express'
 const router = express.Router()
-const perm = 22
 
+const authVerify = (req: any, res: any, next: any) => {
+    if (!req.session.authenticated) {
+        res.status(401).send('401')
+    } else {
+        next()
+    }
+}
 
 const path = require('path')
 
-router.get('/protected/images/:imageName', (req: Request, res: Response) => {
+router.get('/protected/images/:imageName', authVerify, (req: any, res: Response) => {
     const imageName = req.params.imageName;
     res.sendFile(path.resolve(__dirname, '../../protected/images', imageName))
 })
 
-router.get(`/protected/images/users/user/:imageName`, (req: Request, res: Response) => {
+router.get(`/protected/images/users/user/:imageName`, authVerify, (req: any, res: Response) => {
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${perm}`, imageName))
+    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${req.session.userType}`, imageName))
 })
 
-router.get('/protected/images/timeline/:imageName', (req: Request, res: Response) => {
+router.get('/protected/images/timeline/:imageName', authVerify, (req: any, res: Response) => {
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${perm}/timeline`, imageName))
+    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${req.session.userType}/timeline`, imageName))
 })
 
-router.get('/protected/src/:fileName', (req: Request, res: Response) => {
+router.get('/protected/src/:fileName', authVerify, (req: any, res: Response) => {
     const fileName = req.params.fileName;
     res.sendFile(path.resolve(__dirname, '../../protected/src', fileName))
 })

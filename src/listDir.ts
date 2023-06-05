@@ -1,10 +1,8 @@
 import fs from 'fs/promises'
-const perm = 22
 
-
-async function listDir() {
+async function listDir(user: Number) {
   try {
-    return await fs.readdir(`./protected/images/users/${perm}/timeline`)
+    return await fs.readdir(`./protected/images/users/${user}/timeline`)
   } catch (err) {
     console.error('Erro no readdir: ', err)
   }

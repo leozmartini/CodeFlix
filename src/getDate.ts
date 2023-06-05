@@ -13,7 +13,7 @@ function getDate() {
     function padZero(numero: any) {
         return numero < 10 ? '0' + numero : numero;
     }
-    return dataFormatada
+    return `${dataFormatada} (UTC-3)`
 }
 
 export { getDate }

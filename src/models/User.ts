@@ -3,14 +3,14 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface IUser extends Document {
     username: string;
     password: string;
-    perm: Number;
+    userType: Number;
     lastLogin: string;
 }
 
 const UserSchema: Schema = new Schema({
     username: String,
     password: String,
-    perm: Number,
+    userType: Number,
     lastLogin: String
 });
 

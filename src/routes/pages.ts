@@ -1,16 +1,25 @@
 import express, { Request, Response } from 'express'
+const session = require('express-session')
 
 const router = express.Router()
 
-router.get('/principal', (req: Request, res: Response)=> {
+const authVerify = (req: any, res: any, next: any) => {
+    if (!req.session.authenticated) {
+        res.status(401).redirect('/login')
+    } else {
+        next()
+    }
+}
+
+router.get('/principal', authVerify, (req: any, res: Response)=> {
     res.render('../views/principal')
 })
 
-router.get('/math', (req: Request, res: Response)=> {
+router.get('/math', authVerify, (req: any, res: Response)=> {
     res.render('../views/math')
 })
 
-router.get('/musicas', (req: Request, res: Response)=> {
+router.get('/musicas', authVerify, (req: any, res: Response)=> {
     res.render('../views/musicas')
 })
 

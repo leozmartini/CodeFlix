@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser';
 import { getDate } from '../getDate'
+import {createCookie} from '../index'
 const session = require('express-session')
 const bcrypt = require('bcrypt')
 require('dotenv').config();
@@ -13,13 +14,8 @@ const User = require('../models/User')
 router.use(express.json())
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-router.use(session({
-    secret: 'abc',
-    resave: false,
-    saveUninitialized: true
-}));
 
-router.post('/login', async (req: any, res: Response) => {
+router.post('/login', async (req: any, res: any, next: any) => {
     const { username, password } = req.body
 
     // validations 
@@ -29,27 +25,17 @@ router.post('/login', async (req: any, res: Response) => {
     if (!userData) return res.json({"statusLogin": "404"})
 
     // password verify
-    const hash = userData.password
-
-    // res.send(await bcrypt.compare(password, hash).then((x: Boolean) => { return x })?'202' : '401') // comparação ternária.
     let auth
-    await bcrypt.compare(password, hash).then((x: Boolean) => { auth = x })
+    await bcrypt.compare(password, userData.password).then((x: Boolean) => { auth = x })
 
     if (auth) {
-        // exports perm
-        let perm = userData.perm
-    
-
         // update lasLogin
         userData.lastLogin = getDate()
         await userData.save()
-        .then(() => {
-            console.log('lastLogin atualizado')
-        })
         .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
         
-        // start session
-
+        // start session (from index.ts)
+        await createCookie(req, res, username, userData.userType) // userType define qual usuário será logado
         // response
         res.json({
             "statusLogin": "202",
@@ -64,14 +50,14 @@ router.post('/login', async (req: any, res: Response) => {
 })
 
 router.post('/register', async (req: Request, res: Response) => {
-    const { adminKey, username, perm, password } = req.body
+    const { adminKey, username, userType, password } = req.body
 
     // validations
     if (Object.keys(req.body).length === 0) { return res.status(204) } // 204 = No content
     if (!admin || adminKey != admin) { return res.status(422).json({ response: 'Chave admin inválida.' }) }
-    if (username && password == 'delete') { deleteUser(); return } // aqui "perm" não é necessária pra deletar user 
-    if (!username || !password || !perm) { return res.status(422).json({ response: 'Existem dados de login faltando.' }) }
-    if (typeof perm != 'number') { return res.status(422).json({ response: `a chave 'perm' precisa ser um número.` }) }
+    if (username && password == 'delete') { deleteUser(); return } // aqui "userType" não é necessária pra deletar user 
+    if (!username || !password || !userType) { return res.status(422).json({ response: 'Existem dados de login faltando.' }) }
+    if (typeof userType != 'number') { return res.status(422).json({ response: `a chave 'userType' precisa ser um número.` }) }
 
     const userExists = await User.findOne({ username: username })
     if (userExists && password != 'delete') { return res.status(409).json({ response: 'Usuário já cadastrado.' }) }
@@ -84,7 +70,7 @@ router.post('/register', async (req: Request, res: Response) => {
     const user = new User({
         username,
         password: passwordHash,
-        perm: perm,
+        userType: userType,
         lastLogin: getDate()
     })
 
@@ -108,5 +94,6 @@ router.post('/register', async (req: Request, res: Response) => {
     }
 
 })
+
 
 module.exports = router
