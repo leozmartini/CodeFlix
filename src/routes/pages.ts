@@ -12,15 +12,15 @@ const authVerify = (req: any, res: any, next: any) => {
 }
 
 router.get('/principal', authVerify, (req: any, res: Response)=> {
-    res.render('../views/principal')
+    res.render('principal')
 })
 
 router.get('/math', authVerify, (req: any, res: Response)=> {
-    res.render('../views/math')
+    res.render('math')
 })
 
 router.get('/musicas', authVerify, (req: any, res: Response)=> {
-    res.render('../views/musicas')
+    res.render('musicas')
 })
 
 router.use(function(req, res, next) {

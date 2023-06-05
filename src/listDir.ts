@@ -1,8 +1,9 @@
 import fs from 'fs/promises'
+import path from 'path'
 
 async function listDir(user: Number) {
   try {
-    return await fs.readdir(`./protected/images/users/${user}/timeline`)
+    return await fs.readdir(path.join(__dirname, '..','protected', 'images', 'users', user.toString(), 'timeline'))
   } catch (err) {
     console.error('Erro no readdir: ', err)
   }

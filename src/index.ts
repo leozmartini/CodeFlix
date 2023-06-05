@@ -16,12 +16,12 @@ const port = process.env.PORT || 3000;
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use(express.static('public'));
-app.set('views', path.join(__dirname, '../public'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
+app.set('views', path.join(__dirname, '..', 'views'));
 
 app.use(session({
     secret: 'secret',
-    cookie: { maxAge: 10000 },
+    cookie: { maxAge: 30000 },
     saveUnitialized: false
 }))
 
@@ -31,6 +31,10 @@ app.use('/files', files)
 app.use('/pages', pages)
 app.use('/scripts', scripts)
 app.use('/auth', auth)
+
+app.get('/', (req: Request, res: Response)=> {
+    res.render('index')
+})
 
 app.get('/login', (req: Request, res: Response)=> {
     res.render('login')
@@ -46,6 +50,7 @@ function createCookie(req:any, res: any, username: any, userType: any) {
     req.session.username = username
     req.session.userType = userType
 }
+
 
 app.use(function(req, res, next) {
     res.status(404)

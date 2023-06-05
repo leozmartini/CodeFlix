@@ -13,22 +13,22 @@ const path = require('path')
 
 router.get('/protected/images/:imageName', authVerify, (req: any, res: Response) => {
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, '../../protected/images', imageName))
+    res.sendFile(path.resolve(__dirname, '..','..','protected','images', imageName))
 })
 
 router.get(`/protected/images/users/user/:imageName`, authVerify, (req: any, res: Response) => {
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${req.session.userType}`, imageName))
+    res.sendFile(path.resolve(__dirname, '..','..','protected','images','users',req.session.userType.toString(), imageName))
 })
 
 router.get('/protected/images/timeline/:imageName', authVerify, (req: any, res: Response) => {
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, `../../protected/images/users/${req.session.userType}/timeline`, imageName))
+    res.sendFile(path.resolve(__dirname, '..','..','protected','images','users',req.session.userType.toString(),'timeline', imageName))
 })
 
 router.get('/protected/src/:fileName', authVerify, (req: any, res: Response) => {
     const fileName = req.params.fileName;
-    res.sendFile(path.resolve(__dirname, '../../protected/src', fileName))
+    res.sendFile(path.resolve(__dirname, '..','..','protected','src', fileName))
 })
 
 
