@@ -1,8 +1,6 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser';
 import { getDate } from '../getDate'
-import {createCookie} from '../index'
-const session = require('express-session')
 const bcrypt = require('bcrypt')
 require('dotenv').config();
 
@@ -34,8 +32,9 @@ router.post('/login', async (req: any, res: any, next: any) => {
         await userData.save()
         .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
         
-        // start session (from index.ts)
-        await createCookie(req, res, username, userData.userType) // userType define qual usuário será logado
+        // create JWT
+        
+
         // response
         res.json({
             "statusLogin": "202",
@@ -50,14 +49,15 @@ router.post('/login', async (req: any, res: any, next: any) => {
 })
 
 router.post('/register', async (req: Request, res: Response) => {
-    const { adminKey, username, userType, password } = req.body
+    const { adminKey, username, password } = req.body
+    let { userType } = req.body
 
     // validations
     if (Object.keys(req.body).length === 0) { return res.status(204) } // 204 = No content
     if (!admin || adminKey != admin) { return res.status(422).json({ response: 'Chave admin inválida.' }) }
     if (username && password == 'delete') { deleteUser(); return } // aqui "userType" não é necessária pra deletar user 
     if (!username || !password || !userType) { return res.status(422).json({ response: 'Existem dados de login faltando.' }) }
-    if (typeof userType != 'number') { return res.status(422).json({ response: `a chave 'userType' precisa ser um número.` }) }
+    if (typeof userType != 'string') { userType = userType.toString(); console.log(typeof userType) };
 
     const userExists = await User.findOne({ username: username })
     if (userExists && password != 'delete') { return res.status(409).json({ response: 'Usuário já cadastrado.' }) }

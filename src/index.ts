@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
-const session = require('express-session')
 require('dotenv').config();
 const app = express();
 
@@ -19,11 +18,6 @@ app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.set('views', path.join(__dirname, '..', 'views'));
 
-app.use(session({
-    secret: 'secret',
-    cookie: { maxAge: 30000 },
-    saveUnitialized: false
-}))
 
 // Routes
 
@@ -40,24 +34,11 @@ app.get('/login', (req: Request, res: Response)=> {
     res.render('login')
 })
 
-app.get('/user', (req: any, res: Response) => {
-    console.log(req.session);
-    res.send(req.session.username)
-})
-
-function createCookie(req:any, res: any, username: any, userType: any) {
-    req.session.authenticated = true
-    req.session.username = username
-    req.session.userType = userType
-}
-
 
 app.use(function(req, res, next) {
     res.status(404)
     res.render('404')   
 });
-
-export {createCookie}
   
 
 mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
