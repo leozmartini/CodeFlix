@@ -1,13 +1,14 @@
 import express, { Request, Response } from 'express'
 import { getDate } from '../getDate'
+import { listUsers } from '../listUsers';
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt')
 require('dotenv').config();
 const SECRET = process.env.MONGO_PASS
+const ADMIN = process.env.MONGO_PASS
 
 const router = express.Router()
-const admin = process.env.MONGO_PASS
 const User = require('../models/User')
 
 // Middlewares
@@ -66,14 +67,16 @@ router.get('/logout', async (req: any, res: any, next: any) => {
 
 router.post('/register', async (req: Request, res: Response) => {
     const { adminKey, username, password } = req.body
+    const users = await listUsers()
     let { userType } = req.body
 
     // validations
     if (Object.keys(req.body).length === 0) { return res.status(204) } // 204 = No content
-    if (!admin || adminKey != admin) { return res.status(422).json({ response: 'Chave admin inválida.' }) }
+    if (!ADMIN || adminKey != ADMIN) { return res.status(422).json({ response: 'Chave admin inválida.' }) }
     if (username && password == 'delete') { deleteUser(); return } // aqui "userType" não é necessária pra deletar user 
     if (!username || !password || !userType) { return res.status(422).json({ response: 'Existem dados de login faltando.' }) }
-    if (typeof userType != 'string') { userType = userType.toString(); console.log(typeof userType) };
+    if (typeof userType != 'string') { userType = userType.toString(); };
+    if (!users.includes(userType)) { return res.status(404).json({ response: 'userType inválido.' } ) }
 
     const userExists = await User.findOne({ username: username })
     if (userExists && password != 'delete') { return res.status(409).json({ response: 'Usuário já cadastrado.' }) }

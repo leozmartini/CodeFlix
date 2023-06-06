@@ -1,7 +1,7 @@
 const fs = require('fs/promises')
 const path = require('path')
 
-async function listDir(user: string) {
+async function listTimeline(user: string) {
   try {
     return await fs.readdir(path.join(__dirname, '..','protected', 'images', 'users', user, 'timeline'))
   } catch (err) {
@@ -9,4 +9,4 @@ async function listDir(user: string) {
   }
 }
 
-export { listDir }
+export { listTimeline }
