@@ -37,10 +37,10 @@ router.post('/login', async (req: any, res: any, next: any) => {
         // create cookie with JWT token
         const token = jwt.sign({
             userType: userData.userType
-        }, SECRET, { expiresIn: 10})
+        }, SECRET, { expiresIn: 600}) // segundos
 
         res.cookie('token', token, { 
-            maxAge: 10000, // tempo de vida do cookie em milissegundos
+            maxAge: 600000, // tempo de vida do cookie em milissegundos
             httpOnly: true, // impede acesso via JavaScript no cliente
         });
 
@@ -58,6 +58,11 @@ router.post('/login', async (req: any, res: any, next: any) => {
 
 
 })
+
+router.get('/logout', async (req: any, res: any, next: any) => {
+    res.clearCookie('token');
+    res.redirect('/')
+});
 
 router.post('/register', async (req: Request, res: Response) => {
     const { adminKey, username, password } = req.body
