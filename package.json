@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "```bash\r   💎 for a special person",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
