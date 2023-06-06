@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 const { isAuthenticated, getUserType } = require('../tokenVerify') 
+const path = require('path')
 
 const router = express.Router()
 
@@ -8,12 +9,14 @@ router.get('/principal', isAuthenticated, (req: any, res: Response)=> {
     res.render('principal')
 })
 
-router.get('/math', isAuthenticated, (req: any, res: Response)=> {
-    res.render('math')
+router.get('/relevantes', isAuthenticated, async (req: any, res: Response)=> {
+    const userType = await getUserType(req, res)
+    res.render((path.resolve(__dirname, '..', '..', 'views', 'users', userType ,'relevantes')));
 })
 
-router.get('/musicas', isAuthenticated, (req: any, res: Response)=> {
-    res.render('musicas')
+router.get('/escolhas', isAuthenticated, async (req: any, res: Response)=> {
+    const userType = await getUserType(req, res)
+    res.render((path.resolve(__dirname, '..', '..', 'views', 'users', userType ,'escolhas')));
 })
 
 router.use(function(req, res, next) {
