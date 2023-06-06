@@ -1,14 +1,16 @@
 import express, { Request, Response } from 'express'
-import bodyParser from 'body-parser';
 import { getDate } from '../getDate'
+const jwt = require('jsonwebtoken')
+const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt')
 require('dotenv').config();
+const SECRET = process.env.MONGO_PASS
 
 const router = express.Router()
 const admin = process.env.MONGO_PASS
 const User = require('../models/User')
 
-// JSON response 
+// Middlewares
 router.use(express.json())
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -32,13 +34,22 @@ router.post('/login', async (req: any, res: any, next: any) => {
         await userData.save()
         .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`)})
         
-        // create JWT
-        
+        // create cookie with JWT token
+        const token = jwt.sign({
+            userType: userData.userType
+        }, SECRET, { expiresIn: 10})
+
+        res.cookie('token', token, { 
+            maxAge: 10000, // tempo de vida do cookie em milissegundos
+            httpOnly: true, // impede acesso via JavaScript no cliente
+        });
+
 
         // response
         res.json({
-            "statusLogin": "202",
-            "redirect": "/pages/principal"
+            token: token,
+            statusLogin: "202",
+            redirect: "/pages/principal"
         })
 
     } else {

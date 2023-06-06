@@ -1,8 +1,11 @@
 import express, { Request, Response } from 'express';
-import path from 'path';
-import mongoose from 'mongoose';
+const path = require('path')
+const mongoose = require('mongoose')
 require('dotenv').config();
 const app = express();
+const SECRET = process.env.MONGO_PASS
+
+
 
 const files = require('./routes/files')
 const pages = require('./routes/pages')
@@ -44,9 +47,11 @@ app.use(function(req, res, next) {
 mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
     console.log('✅ Conectado ao banco de dados.')
     app.listen(port, () => console.log(`✅ Server online -> http://${serverURL}:${port}/`))
-}).catch((error) => {
+}).catch((error: any) => {
     console.log(`Erro na conexão com banco de dados: ${error}`)
 })
+
+
 
 
 // HTTPS (apenas para desenvolvimento, no deploy não é necessário pois é usado o SSL da própria hospedagem)

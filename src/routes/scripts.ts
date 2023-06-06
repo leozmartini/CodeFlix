@@ -1,12 +1,12 @@
 import express, { Request, Response } from 'express'
 const router = express.Router()
-const userType = "13" 
-
+const { isAuthenticated, getUserType } = require('../tokenVerify') 
 
 import { listDir } from '../listDir';
 
 
-router.get('/array', async (req: any, res: Response) => {
+router.get('/array', isAuthenticated, async (req: any, res: Response) => {
+    const userType = await getUserType(req, res)
     const files = await listDir(userType)
     res.send(files)
 })

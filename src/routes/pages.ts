@@ -1,17 +1,18 @@
 import express, { Request, Response } from 'express'
+const { isAuthenticated, getUserType } = require('../tokenVerify') 
 
 const router = express.Router()
 
 
-router.get('/principal', (req: any, res: Response)=> {
+router.get('/principal', isAuthenticated, (req: any, res: Response)=> {
     res.render('principal')
 })
 
-router.get('/math', (req: any, res: Response)=> {
+router.get('/math', isAuthenticated, (req: any, res: Response)=> {
     res.render('math')
 })
 
-router.get('/musicas', (req: any, res: Response)=> {
+router.get('/musicas', isAuthenticated, (req: any, res: Response)=> {
     res.render('musicas')
 })
 
