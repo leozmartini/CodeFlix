@@ -15,6 +15,18 @@ function isAuthenticated(req: any, res: any, next: any) {
     });
 }
 
+function loginRedirect(req: any, res: any, next: any) {
+  cookieParser()(req, res, async () => {
+    const token = req.cookies['token'];
+    try {
+      await jwt.verify(token, SECRET);
+      res.redirect('/pages/principal')
+    } catch (error) {
+      next();
+    }
+  });
+}
+
 async function getUserType(req: any, res: any) {
     let userType
     await cookieParser()(req, res, async () => {
@@ -31,4 +43,4 @@ async function getUserType(req: any, res: any) {
     return userType
 }
 
-module.exports = { isAuthenticated, getUserType }
+module.exports = { isAuthenticated, getUserType, loginRedirect }
