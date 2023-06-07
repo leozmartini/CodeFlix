@@ -15,9 +15,13 @@
     <div class="container">
         <h2>Login</h2>
 
-            <input type="text" id="username" placeholder="Nome de usuário">
-            <input type="password" id="password" placeholder="Senha">
-            <button onclick="login()"><strong>Entrar</strong></button>
+        <form id="form" onsubmit="login(event)">
+            <!-- Seus campos de formulário aqui -->
+            <input type="text" name="username" placeholder="Nome de usuário" required />
+            <input type="password" name="password" placeholder="Senha" required/>
+            <!-- Botão de envio -->
+            <button type="submit" value="Enviar"><strong>Enviar</strong></button>
+          </form>
 
     </div>
     <div id="response"></div>

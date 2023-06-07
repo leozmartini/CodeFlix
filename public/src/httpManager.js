@@ -1,13 +1,14 @@
-function login() {
-    const username = document.getElementById('username').value
-    const password = document.getElementById('password').value
-    const response = document.getElementById('response')
-    let resText
+function login(event) {
+    event.preventDefault();
+    
+    const formElement = document.getElementById("form");
+    const formData = new FormData(formElement);
+
     fetch("/auth/login", {
         method: 'POST',
         body: JSON.stringify({
-            username: username,
-            password: password
+            username: formData.get("username"),
+            password: formData.get("password")
         }),
         headers: { "Content-Type": "application/json" }
 
@@ -16,7 +17,6 @@ function login() {
         .then(async (res) => {
             const data = await res.json();
 
-            // response.innerHTML = resText == '404' ? '<h3> Usuário não encontrado </h3>' : resText == '401' ? '<h3> Senha incorreta </h3>' : '<h3>logado</h3>'
             if (data.statusLogin == '404') {responseFailed(); response.innerHTML = '<h3> Usuário não encontrado </h3>' }
             if (data.statusLogin == '401') { responseFailed(); response.innerHTML = '<h3> Senha incorreta </h3>' }
 
@@ -29,7 +29,7 @@ function login() {
                 },1000) 
             }
         })
-
+    
 }
 
 
