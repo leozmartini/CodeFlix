@@ -11,12 +11,12 @@ router.get('/principal', isAuthenticated, (req: any, res: Response)=> {
 
 router.get('/relevantes', isAuthenticated, async (req: any, res: Response)=> {
     const userType = await getUserType(req, res)
-    res.render((path.resolve(__dirname, '..', '..', 'views', 'users', userType ,'relevantes')));
+    res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html', 'relevantes')));
 })
 
 router.get('/escolhas', isAuthenticated, async (req: any, res: Response)=> {
     const userType = await getUserType(req, res)
-    res.render((path.resolve(__dirname, '..', '..', 'views', 'users', userType ,'escolhas')));
+    res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html','escolhas')));
 })
 
 router.use(function(req, res, next) {

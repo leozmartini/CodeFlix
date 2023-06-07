@@ -12,13 +12,13 @@ router.get('/protected/images/:imageName',  isAuthenticated, (req: any, res: Res
 router.get(`/protected/images/users/user/:imageName`, isAuthenticated, async (req: any, res: Response) => {
     const userType = await getUserType(req, res)
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, '..','..','protected','images','users',userType, imageName))
+    res.sendFile(path.resolve(__dirname, '..','..','protected','users',userType, 'images', imageName))
 })
 
 router.get('/protected/images/timeline/:imageName', isAuthenticated, async (req: any, res: Response) => {
     const userType = await getUserType(req, res)
     const imageName = req.params.imageName;
-    res.sendFile(path.resolve(__dirname, '..','..','protected','images','users',userType,'timeline', imageName))
+    res.sendFile(path.resolve(__dirname, '..','..','protected','users',userType,'images','timeline', imageName))
 })
 
 router.get('/protected/src/:fileName', isAuthenticated, (req: any, res: Response) => {
