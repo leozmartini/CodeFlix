@@ -2,3 +2,4 @@
 .env
 /SSL
 .vercel
+/dist
