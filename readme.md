@@ -2,7 +2,17 @@
 
 > Projeto com sistema de login com JWT e páginas exclusivas para cada tipo de usuário.
 
-### Ajustes e melhorias
+## 👾 Sumário
+1. [Ajustes e melhorias](#-ajustes-e-melhorias)
+2. [funcionalidades](#-funcionalidades)
+3. [Deploy](#-deploy)
+4. [Construído com](#%EF%B8%8F-construído-com)
+5. [API](#%EF%B8%8F-api)
+6. [Instalação local](#-instalando-codeflix-localmente)
+7. [Licença](#-licença)
+
+
+## 📝 Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
@@ -12,48 +22,6 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Sistema de usuários exclusivos.
 - [x] Ajustar GitFlow.
 - [ ] Front-end com framework moderno.
-
-## 🚀 Instalando CodeFlix localmente.
-
-Para instalar o CodeFlix, siga estas etapas:
-
-1. Instale as dependencias. (Necessário Node.js)
-```
-npm ci
-```
-
-2. Crie um arquivo .env e preencha-o seguindo o exemplo: (Necessário [MongoDB](https://www.mongodb.com/pt-br))
-```
-MONGO_USER=usuário.do.database
-MONGO_PASS=senha.do.database
-MONGO_URI=inserir.link.de.conexão.MondoDB
-PORT=7777
-SERVER_URL=localhost
-```
-
-3. Inicie o projeto (build).
-```
-npm run build
-
-npm run start
-```
-
-3. Iniciar o projeto (dev). (Necessário devDependencies)
-```
-npm run dev
-```
-
-
-## 🛠️ Construído com
-
-* [express](https://www.npmjs.com/package/express) - Gerenciar back-end.
-* [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - Sistema de token de acesso.
-* [mongoose](https://www.npmjs.com/package/mongoose) - Gerenciar banco de dados.
-* [bcrypt](https://www.npmjs.com/package/bcrypt) - Criptografia de senhas no DataBase.
-* [body-parser](https://www.npmjs.com/package/body-parser) - Processar body das requisições HTTP.
-* [cookie-parser](https://www.npmjs.com/package/cookie-parser) - Manipular cookies.
-* [dotenv](https://www.npmjs.com/package/dotenv) - Esconder dados sensíveis do servidor.
-* [ejs](https://www.npmjs.com/package/ejs) - Renderizar HTML.
 
 ## ☕ Funcionalidades
 
@@ -79,9 +47,42 @@ Exemplo de login com usuário do tipo Chess:
 
 https://github.com/leozmartini/CodeFlix/assets/82405111/15d8e4ea-c36d-4d45-8494-280bd2ecadf8
 
+## 🚀 Deploy
+
+### O projeto está no ar no seguinte endereço: https://codeflix-2cnw.onrender.com
+
+* A host deve demorar um pouco pra responder, principalmente no primeiro acesso à página inicial.
+
+* Você pode seguir com esses dados de login:
+```bash
+    - UserType: default
+    username: default
+    password: admin
+
+    - UserType: chess
+    username: chess
+    password: admin
+
+```
 
 
-### API
+
+## 🛠️ Construído com
+
+* [express](https://www.npmjs.com/package/express) - Gerenciar back-end.
+* [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - Sistema de token de acesso.
+* [mongoose](https://www.npmjs.com/package/mongoose) - Gerenciar banco de dados.
+* [bcrypt](https://www.npmjs.com/package/bcrypt) - Criptografia de senhas no DataBase.
+* [body-parser](https://www.npmjs.com/package/body-parser) - Processar body das requisições HTTP.
+* [cookie-parser](https://www.npmjs.com/package/cookie-parser) - Manipular cookies.
+* [dotenv](https://www.npmjs.com/package/dotenv) - Esconder dados sensíveis do servidor.
+* [ejs](https://www.npmjs.com/package/ejs) - Renderizar HTML.
+
+
+
+
+
+## ⚙️ API
 Comandos da API para consultar e registrar dados.
 
 * Listar usuários
@@ -146,6 +147,37 @@ Ação é feita quando se clica na foto do usuário no canto superior direito na
 * Outros
 
 Os demais recursos da api, como verificação de senhas e envio de arquivos protegidos e dados para usuários logados, são usados diretamente pelo Front-end durante o uso das páginas.
+
+## 🔗 Instalando CodeFlix localmente.
+
+Para instalar o CodeFlix, siga estas etapas:
+
+1. Instale as dependencias. (Necessário Node.js)
+```
+npm ci
+```
+
+2. Crie um arquivo .env e preencha-o seguindo o exemplo: (Necessário [MongoDB](https://www.mongodb.com/pt-br))
+```
+MONGO_USER=usuário.do.database
+MONGO_PASS=senha.do.database
+MONGO_URI=inserir.link.de.conexão.MondoDB
+PORT=7777
+SERVER_URL=localhost
+```
+
+3. Inicie o projeto (build).
+```
+npm run build
+
+npm run start
+```
+
+3. Iniciar o projeto (dev). (Necessário devDependencies)
+```
+npm run dev
+```
+
 
 
 ## 📝 Licença
