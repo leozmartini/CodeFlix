@@ -4,7 +4,7 @@
 
 ## 👾 Sumário
 1. [Ajustes e melhorias](#-ajustes-e-melhorias)
-2. [funcionalidades](#-funcionalidades)
+2. [Funcionalidades](#-funcionalidades)
 3. [Deploy](#-deploy)
 4. [Construído com](#%EF%B8%8F-construído-com)
 5. [API](#%EF%B8%8F-api)
