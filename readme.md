@@ -21,6 +21,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Criar sistema de login seguro.
 - [x] Sistema de usuários exclusivos.
 - [x] Ajustar GitFlow.
+- [ ] Reconstruir estrutura do projeto.
 - [ ] Front-end com framework moderno.
 
 ## ☕ Funcionalidades
