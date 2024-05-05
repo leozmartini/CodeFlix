@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 const path = require('path')
 const mongoose = require('mongoose')
-const {loginRedirect} = require('./tokenVerify')
+const {loginRedirect} = require('./helpers/tokenVerify')
 require('dotenv').config();
 
 const app = express();

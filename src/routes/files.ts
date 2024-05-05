@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-const { isAuthenticated, getUserType } = require('../tokenVerify')  
+const { isAuthenticated, getUserType } = require('../helpers/tokenVerify')  
 const router = express.Router()
 
 const path = require('path')

@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
-import { getDate } from '../getDate'
-import { listUsers } from '../listUsers';
+import { getDate } from '../helpers/getDate'
+import { listUsers } from '../helpers/listUsers';
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt')

@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express'
 const router = express.Router()
-const { isAuthenticated, getUserType } = require('../tokenVerify') 
+const { isAuthenticated, getUserType } = require('../helpers/tokenVerify') 
 
-import { listTimeline } from '../listTimeline';
+import { listTimeline } from '../helpers/listTimeline';
 
 // Recebe o nome das fotos sorteadas e envia as mesmas.
 router.get('/array', isAuthenticated, async (req: Request, res: Response) => {
