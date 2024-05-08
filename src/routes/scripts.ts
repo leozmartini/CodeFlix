@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express'
 const router = express.Router()
-const { isAuthenticated, getUserType } = require('../helpers/tokenVerify') 
-
+const { isAuthenticated, getUserType } = require('../services/tokenHandler');
 import { listTimeline } from '../helpers/listTimeline';
 
 // Recebe o nome das fotos sorteadas e envia as mesmas.
