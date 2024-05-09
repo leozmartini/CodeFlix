@@ -1,5 +1,3 @@
-import express, { Request, Response } from 'express'
-const { isAuthenticated, getUserType } = require('../services/tokenHandler') 
 const path = require('path')
 
 async function getHTMLPath(userType: string, finalPath: string): Promise<string> {

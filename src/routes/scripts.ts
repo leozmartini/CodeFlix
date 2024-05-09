@@ -4,7 +4,7 @@ const { isAuthenticated, getUserType } = require('../services/tokenHandler');
 import { listTimeline } from '../helpers/listTimeline';
 
 // Recebe o nome das fotos sorteadas e envia as mesmas.
-router.get('/array', isAuthenticated, async (req: Request, res: Response) => {
+router.get('/array', async (req: Request, res: Response) => {
     const userType = await getUserType(req, res)
     const files = await listTimeline(userType)
     res.send(files)
