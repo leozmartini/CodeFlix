@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 const path = require('path')
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,7 @@ const auth  = require('./routes/auth')
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(cookieParser())
 app.set('views', path.join(__dirname, '..', 'views'));
 
 // Routes
