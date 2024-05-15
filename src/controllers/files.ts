@@ -28,10 +28,9 @@ async function getUserImagesByDirectory(req: Request, res: Response, directory: 
     try {
         const userType = await getUserType(req, res)
         const imageName = req.params.imageName;
-        
         res.sendFile(getProtectedPath(['users',userType,'images', directory, imageName]))
-    } catch (error) {
-        res.status(404).send('404');
+    } catch (error: any) {
+        res.status(404).send("404");
     }
 }
 
