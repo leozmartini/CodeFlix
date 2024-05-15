@@ -16,4 +16,4 @@ function getDate() {
     return `${dataFormatada} (UTC-3)`
 }
 
-export { getDate }
+export { getDate };
