@@ -7,8 +7,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 require('dotenv').config();
-const SECRET = process.env.MONGO_PASS
-const ADMIN = process.env.MONGO_PASS
+const SECRET = process.env.SECRET
+const ADMIN = process.env.SECRET
 
 async function loginVerify(req: Request, res: Response) {
     const { username, password } = req.body

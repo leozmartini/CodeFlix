@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const SECRET = process.env.MONGO_PASS
+const SECRET = process.env.SECRET
 
 async function isAuthenticated(req: Request, res: Response): Promise<boolean> {
   let isAuthenticated = false;

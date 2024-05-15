@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const app = express();
-const serverURL = process.env.SERVER_URL || "localhost";
 const port = process.env.PORT || 3000;
 
 const files = require('./routes/files')
@@ -40,7 +39,7 @@ app.use(function(req, res, next) {
 
 mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
     console.log('✅ Conectado ao banco de dados.')
-    app.listen(port, () => console.log(`✅ Server online -> http://${serverURL}:${port}/`))
+    app.listen(port, () => console.log(`✅ Server online na porta ${port}`))
 }).catch((error: any) => {
     console.log(`Erro na conexão com banco de dados: ${error}`)
 })
