@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { authVerify, loginRedirect } from './controllers/authVerify';
 const path = require('path')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser');
@@ -20,17 +21,15 @@ app.use(cookieParser())
 app.set('views', path.join(__dirname, '..', 'views'));
 
 // Routes
-app.use('/files', files)
-app.use('/pages', pages)
-app.use('/scripts', scripts)
+app.use('/files', authVerify, files)
+app.use('/pages', authVerify, pages)
+app.use('/scripts', authVerify, scripts)
 app.use('/auth', auth)
+
+app.get('/login', loginRedirect)
 
 app.get('/', (req: Request, res: Response)=> {
     res.render('index')
-})
-
-app.get('/login', (req: Request, res: Response)=> {
-    res.render('login')
 })
 
 app.use(function(req, res, next) {

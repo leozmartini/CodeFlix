@@ -17,16 +17,6 @@ async function isAuthenticated(req: Request, res: Response): Promise<boolean> {
   return isAuthenticated;
 }
 
-async function loginRedirect(req: Request, res: Response, next: NextFunction) {
-    const token = req.cookies['token'];
-    try {
-      await jwt.verify(token, SECRET);
-      res.redirect('/pages/principal')
-    } catch (error) {
-      next();
-    }
-}
-
 async function getUserType(req: Request, res: Response): Promise<string> {
   try {
       const token = req.cookies['token'];
@@ -37,5 +27,4 @@ async function getUserType(req: Request, res: Response): Promise<string> {
     }
 }
 
-// module.exports = { isAuthenticated, getUserType, loginRedirect }
-export { isAuthenticated, getUserType, loginRedirect };
+export { isAuthenticated, getUserType, };

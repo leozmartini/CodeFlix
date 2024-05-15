@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import { getUserType } from '../services/tokenHandler'
 import { listTimeline } from '../helpers/listTimeline'
 
-async function getScripts(req: Request, res: Response) {
+async function getFiles(req: Request, res: Response) {
     try {
         const userType = await getUserType(req, res);
         const files = await listTimeline(userType)
@@ -12,4 +12,4 @@ async function getScripts(req: Request, res: Response) {
     }
 }
 
-export { getScripts, }
+export { getFiles, }
