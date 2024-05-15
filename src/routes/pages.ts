@@ -1,27 +1,13 @@
-import express, { Request, Response } from 'express'
-const { isAuthenticated, getUserType } = require('../tokenVerify') 
-const path = require('path')
+import express, { Request, Response, } from 'express'
+const { getPage, } = require('../controllers/pages');
 
 const router = express.Router()
 
+router.get('/principal', (req: Request, res: Response) => getPage(req, res, 'principal'))
+router.get('/relevantes', (req: Request, res: Response) => getPage(req, res, 'relevantes'))
+router.get('/escolhas', (req: Request, res: Response) => getPage(req, res, 'escolhas'))
 
-router.get('/principal', isAuthenticated, async (req: Request, res: Response)=> {
-    const userType = await getUserType(req, res)
-    res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html', 'principal')));
-})
-
-// Retorna o html do usuário logado
-router.get('/relevantes', isAuthenticated, async (req: Request, res: Response)=> {
-    const userType = await getUserType(req, res)
-    res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html', 'relevantes')));
-})
-
-router.get('/escolhas', isAuthenticated, async (req: Request, res: Response)=> {
-    const userType = await getUserType(req, res)
-    res.render((path.resolve(__dirname, '..', '..', 'protected', 'users', userType , 'html','escolhas')));
-})
-
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
     res.status(404)
     res.render('404')
 });

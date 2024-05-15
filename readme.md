@@ -21,7 +21,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Criar sistema de login seguro.
 - [x] Sistema de usuários exclusivos.
 - [x] Ajustar GitFlow.
-- [ ] Reconstruir estrutura do projeto.
+- [x] Reconstruir estrutura do projeto.
 - [ ] Front-end com framework moderno.
 
 ## ☕ Funcionalidades
@@ -104,7 +104,7 @@ Entrada:
 POST
 /auth/register
 Body JSON: {
-    "adminKey": "SENHA.MONGODB",
+    "adminKey": "SECRET",
     "username": "admin",
     "password": "admin",
     "userType": "default"
@@ -119,16 +119,15 @@ Usuário será registrado. Requer senha do Mongo pois apenas administradores pod
 
 ```
 Entrada:
-POST
+DELETE
 /auth/register
 Body JSON: {
-    "adminKey": "SENHA.MONGODB",
+    "adminKey": "SECRET",
     "username": "x",
-    "password": "delete",
 }
 
 Saída:
-Usuário será deletado do bando de dados. Essa ação acontece quando a senha do usuário foi "delete".
+Usuário será deletado do bando de dados.
 
 ```
 
@@ -160,11 +159,9 @@ npm ci
 
 2. Crie um arquivo .env e preencha-o seguindo o exemplo: (Necessário [MongoDB](https://www.mongodb.com/pt-br))
 ```
-MONGO_USER=usuário.do.database
-MONGO_PASS=senha.do.database
-MONGO_URI=inserir.link.de.conexão.MondoDB
-PORT=7777
-SERVER_URL=localhost
+MONGO_URI=mongodb://localhost:27017/codeflix
+SECRET=1234
+PORT=3000
 ```
 
 3. Inicie o projeto (build).
