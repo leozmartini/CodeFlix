@@ -11,48 +11,41 @@ const SECRET = process.env.MONGO_PASS
 const ADMIN = process.env.MONGO_PASS
 
 async function loginVerify(req: Request, res: Response) {
-    try {
-        const { username, password } = req.body
+    const { username, password } = req.body
 
-        // validations 
-        if (!username || !password) return
+    // validations 
+    if (!username || !password) return
 
-        const userData = await User.findOne({ username: username })
-        if (!userData) throw new Error("404")
+    const userData = await User.findOne({ username: username })
+    if (!userData) throw new Error("404")
 
-        await bcrypt.compare(password, userData.password).then((Authorized: boolean) => {
-            if (!Authorized) throw new Error("401")
-        });
+    await bcrypt.compare(password, userData.password).then((Authorized: boolean) => {
+        if (!Authorized) throw new Error("401")
+    });
 
-        // Authorized
+    // Authorized
 
-        // update lasLogin
-        userData.lastLogin = getDate()
-        await userData.save()
-            .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`) })
+    // update lasLogin
+    userData.lastLogin = getDate()
+    await userData.save()
+        .catch((error: any) => { console.log(`Erro ao salvar lastLogin: ${error}`) })
 
-        // create cookie with JWT token
-        const token = jwt.sign({
-            userType: userData.userType
-        }, SECRET, { expiresIn: 600 }) // segundos
+    // create cookie with JWT token
+    const token = jwt.sign({
+        userType: userData.userType
+    }, SECRET, { expiresIn: 600 }) // segundos
 
-        res.cookie('token', token, {
-            maxAge: 600000, // 10 mins
-            httpOnly: true, // impede acesso via JavaScript no cliente
-        });
+    res.cookie('token', token, {
+        maxAge: 600000, // 10 mins
+        httpOnly: true, // impede acesso via JavaScript no cliente
+    });
 
 
-        // response
-        res.json({
-            token: token,
-            statusLogin: "202",
-            redirect: "/pages/principal"
-        })
-
-    } catch (error) {
-        res.status(500).send('Internal Server Error');
-    }
-
+    return {
+        token: token,
+        statusLogin: "202",
+        redirect: "/pages/principal"
+    };
 }
 
 async function createUser(req: Request, res: Response) {

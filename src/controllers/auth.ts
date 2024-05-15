@@ -14,7 +14,9 @@ const ADMIN = process.env.MONGO_PASS
 
 async function login(req: Request, res: Response, next: NextFunction) {
     try {
-        await loginVerify(req, res);
+        await loginVerify(req, res).then((response) => {
+            res.json( response )
+        });
     } catch (error: any) {
         res.json({ "statusLogin": error.message })
     }
@@ -57,14 +59,14 @@ async function deleteUser(req: Request, res: Response) {
         if (error.message == "500") res.status(500).send('Internal Server Error');
         if (error.message == "404") res.status(404).send('Usuário não encontrado.');
         if (error.message == "400") res.status(400).send('Verifique a requisição.')
-        
+
     }
-    
+
 }
 
 async function userList(req: Request, res: Response) {
     try {
-       res.send(await listAllUsers())
+        res.send(await listAllUsers())
     } catch (error) {
         res.status(500).send('Internal Server Error');
     }
