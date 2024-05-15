@@ -1,6 +1,6 @@
-import express, { Request, Response } from 'express'
-import { getUserType } from '../services/tokenHandler'
-import { listTimeline } from '../helpers/listTimeline'
+import { Request, Response } from 'express';
+import { listTimeline } from '../helpers/listTimeline';
+import { getUserType } from '../services/tokenHandler';
 
 async function getFiles(req: Request, res: Response) {
     try {
@@ -12,4 +12,4 @@ async function getFiles(req: Request, res: Response) {
     }
 }
 
-export { getFiles, }
+export { getFiles };

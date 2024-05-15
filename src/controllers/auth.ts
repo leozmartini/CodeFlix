@@ -1,21 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
-import { getDate } from '../helpers/getDate';
-import { listUsers } from '../helpers/listUsers';
-import { createUser, deleteUserFromDB, loginVerify, listAllUsers } from '../services/auth';
-
-const User = require('../models/User');
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-
-require('dotenv').config();
-const SECRET = process.env.MONGO_PASS
-const ADMIN = process.env.MONGO_PASS
-
+import { createUser, deleteUserFromDB, listAllUsers, loginVerify } from '../services/auth';
 
 async function login(req: Request, res: Response, next: NextFunction) {
     try {
         await loginVerify(req, res).then((response) => {
-            res.json( response )
+            res.json(response)
         });
     } catch (error: any) {
         res.json({ "statusLogin": error.message })
@@ -72,5 +61,5 @@ async function userList(req: Request, res: Response) {
     }
 }
 
-export { userList, login, logout, register, deleteUser, };
+export { deleteUser, login, logout, register, userList };
 

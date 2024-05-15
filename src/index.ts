@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 const files = require('./routes/files')
 const pages = require('./routes/pages')
 const scripts = require('./routes/scripts')
-const auth  = require('./routes/auth')
+const auth = require('./routes/auth')
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -27,17 +27,17 @@ app.use('/auth', auth)
 
 app.get('/login', loginRedirect)
 
-app.get('/', (req: Request, res: Response)=> {
+app.get('/', (req: Request, res: Response) => {
     res.render('index')
 })
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.status(404)
-    res.render('404')   
+    res.render('404')
 });
-  
 
-mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI' ).then(() => {
+
+mongoose.connect(process.env.MONGO_URI || 'Erro no DB_URI').then(() => {
     console.log('✅ Conectado ao banco de dados.')
     app.listen(port, () => console.log(`✅ Server online na porta ${port}`))
 }).catch((error: any) => {

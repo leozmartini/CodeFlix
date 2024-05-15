@@ -1,6 +1,6 @@
-import express, { Request, Response } from 'express'
-const { getUserType, isAuthenticated } = require('../services/tokenHandler') 
-const {getHTMLPath, } = require('../services/pages')
+import { Request, Response } from 'express'
+const { getUserType, isAuthenticated } = require('../services/tokenHandler')
+const { getHTMLPath, } = require('../services/pages')
 
 async function getPage(req: Request, res: Response, finalPath: string) {
     try {
@@ -8,7 +8,7 @@ async function getPage(req: Request, res: Response, finalPath: string) {
         res.render(await getHTMLPath(userType, finalPath))
     } catch (error: any) {
         res.send(`500: Internal Server Error`);
-    }   
+    }
 }
 
 module.exports = { getPage, }
